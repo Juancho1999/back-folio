@@ -6,6 +6,20 @@ const nodemailer = require('nodemailer');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Configuración CORS
+const corsOptions = {
+  origin: 'https://portafolio-ten-vert-85.vercel.app', // Dominio de tu frontend
+  methods: ['GET', 'POST', 'OPTIONS'], // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'], // Cabeceras permitidas
+  preflightContinue: false, // Deja que Express maneje las respuestas de preflight automáticamente
+  optionsSuccessStatus: 204, // Esto puede ayudar con algunos problemas de compatibilidad
+};
+
+
+// Usar CORS con las opciones configuradas
+app.use(cors(corsOptions));
+
+
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
@@ -45,6 +59,9 @@ app.post('/send-mail', async (req, res) => {
         res.status(200).json({ message: 'Correo enviado exitosamente' });
     });
 });
+
+// Asegurar que las solicitudes OPTIONS sean manejadas correctamente
+app.options('*', cors(corsOptions));
 
 // Exportar el handler para que Vercel lo ejecute como función serverless
 module.exports = app;
