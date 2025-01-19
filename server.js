@@ -17,7 +17,6 @@ const corsOptions = {
 };
 
 
-
 // Usar CORS con las opciones configuradas
 app.use(cors(corsOptions));
 
