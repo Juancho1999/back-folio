@@ -9,11 +9,12 @@ const PORT = process.env.PORT || 3000;
 // Configuración CORS
 const corsOptions = {
   origin: 'https://portafolio-ten-vert-85.vercel.app', // Dominio de tu frontend
-  methods: ['GET', 'POST', 'OPTIONS'], // Métodos permitidos
-  allowedHeaders: ['Content-Type', 'Authorization'], // Cabeceras permitidas
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], // Cabeceras permitidas
   preflightContinue: false, // Deja que Express maneje las respuestas de preflight automáticamente
   optionsSuccessStatus: 204, // Esto puede ayudar con algunos problemas de compatibilidad
 };
+
 
 
 // Usar CORS con las opciones configuradas
