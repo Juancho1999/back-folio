@@ -6,9 +6,9 @@ header("Access-Control-Allow-Headers: Content-Type");
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'phpmailer/src/PHPMailer.php';
-require 'phpmailer/src/SMTP.php';
-require 'phpmailer/src/Exception.php';
+require 'phpmailer/PHPMailer.php';
+require 'phpmailer/SMTP.php';
+require 'phpmailer/Exception.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
