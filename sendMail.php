@@ -1,7 +1,20 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST");
+
+<?php
+// Permitir solicitudes desde tu frontend en Vercel
+header("Access-Control-Allow-Origin: https://juanirala.vercel.app");
+
+// Permitir métodos HTTP específicos
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+
+// Permitir ciertos encabezados
 header("Access-Control-Allow-Headers: Content-Type");
+
+// Manejar las solicitudes OPTIONS (preflight)
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
